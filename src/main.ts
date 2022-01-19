@@ -1,12 +1,8 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
+//
+// import { HelloWorld } from '../lib/componentlib.es.js'
 import App from './App.vue'
-import router from './router'
-import store from './store'
 
-Vue.config.productionTip = false
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+// App.component('HelloWorld', HelloWorld)
+// console.log('HelloWorld', HelloWorld)
+createApp(App).mount('#app')

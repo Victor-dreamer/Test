@@ -1,50 +1,51 @@
 {
-  "name": "test",
-  "version": "0.1.0",
-  "private": true,
+  "name": "componentlib",
+  "version": "0.0.1",
+  "files": [
+    "lib"
+  ],
+  "main": "./lib/componentlib.umd.js",
+  "module": "./lib/componentlib.es.js",
+  "exports": {
+    ".": {
+      "import": "./lib/componentlib.es.js",
+      "require": "./lib/componentlib.umd.js"
+    }
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^2.6.12",
-    "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^8.5.1",
-    "vue-router": "^3.4.5",
-    "vuex": "^3.5.1"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "@vue/cli-plugin-babel": "^4.5.6",
-    "@vue/cli-plugin-eslint": "^4.5.6",
-    "@vue/cli-plugin-router": "^4.5.6",
-    "@vue/cli-plugin-typescript": "^4.5.6",
-    "@vue/cli-plugin-vuex": "^4.5.6",
-    "@vue/cli-service": "^4.5.6",
-    "@vue/eslint-config-standard": "^5.1.2",
-    "@vue/eslint-config-typescript": "^5.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.2.2",
-    "lint-staged": "^9.5.0",
-    "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.2",
-    "typescript": "^3.9.7",
-    "vue-template-compiler": "^2.6.12"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "build:lib": "vue-tsc --noEmit --skipLibCheck && vite build --config ./build/lib.config.js",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --max-warnings 0 && pretty-quick --check --branch dev",
+    "lint:fix": "eslint --fix . --ext .vue,.js,.ts,.jsx,.tsx && pretty-quick --branch dev"
   },
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+    "*.{vue,js,ts,jsx,tsx}": "eslint --fix"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@typescript-eslint/eslint-plugin": "5.9.0",
+    "@typescript-eslint/parser": "5.9.0",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "eslint": "8.6.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-define-config": "1.2.2",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-vue": "8.2.0",
+    "lint-staged": "12.1.6",
+    "prettier": "2.5.1",
+    "pretty-quick": "3.1.3",
+    "rollup": "^2.64.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vite-plugin-dts": "^0.9.9",
+    "vue-tsc": "^0.29.8"
   }
 }
